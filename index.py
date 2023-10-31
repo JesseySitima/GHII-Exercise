@@ -88,24 +88,8 @@ for start_district in districts:
             path, length = find_shortest_path(my_graph, start_district, end_district)
             if path:
                 print(f"Shortest path from {start_district} to {end_district}: {path}")
-                print(f"Shortest path length: {length}")
+                print(f"Total Distance: {length}")
             else:
                 print(f"No path found from {start_district} to {end_district}.")
 
 
-# Create a NetworkX graph from the custom graph
-G = nx.Graph()
-
-for node_name, node in my_graph.nodes.items():
-    for neighbor, weight in node.connections.items():
-        G.add_edge(node_name, neighbor.name, weight=weight)
-
-# Draw the graph using NetworkX and Matplotlib
-pos = nx.spring_layout(G, seed=42)  # You can use different layout algorithms
-labels = {node: node for node in G.nodes()}
-edge_labels = {(u, v): w['weight'] for u, v, w in G.edges(data=True)}
-
-nx.draw(G, pos, with_labels=True, labels=labels, node_size=500, node_color='lightblue', font_size=10)
-nx.draw_networkx_edge_labels(G, pos, edge_labels=edge_labels, font_size=8)
-
-plt.show()
