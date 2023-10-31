@@ -1,3 +1,4 @@
+# A Python code to select the shortest path using weighted routes from source to destination.
 import networkx as nx
 import matplotlib.pyplot as plt
 
